@@ -9,3 +9,7 @@ build: Reduce.cu
 
 run: 
 	./Reduce $(ARGS)
+
+
+
+clean: 

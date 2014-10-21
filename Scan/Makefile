@@ -9,3 +9,7 @@ build: Scan.cu
 
 run: 
 	./Scan $(ARGS)
+
+
+
+clean: 
