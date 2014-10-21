@@ -38,8 +38,12 @@ all_benchmarks =
   [ (mkBenchmark "Reduce/Makefile" [elems] defaultCfgSpc)
     { progname = Just "thrust-reduce" } 
   | elems  <- [ show (2^n) | n <- [8..24] ] -- 256 to 32768
-  ] 
-
+  ] ++ 
+  [ (mkBenchmark "Scan/Makefile" [elems] defaultCfgSpc)
+    { progname = Just "thrust-scan" } 
+  | elems  <- [ show (2^n) | n <- [8..24] ] -- 256 to 32768
+  ]
+  
 -- | Default configuration space over which to vary settings:
 --   This is a combination of And/Or boolean operations, with the ability
 --   to set various environment and compile options.
