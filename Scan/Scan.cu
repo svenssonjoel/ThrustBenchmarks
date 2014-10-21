@@ -46,6 +46,9 @@ int main(int argc, char **argv) {
   double secs = 
     (double) (tv2.tv_usec - tv1.tv_usec) /1000000 + 
     (double) (tv2.tv_sec - tv1.tv_sec); 
+
+
+  std::cout << "ELEMENTS_PROCESSED: " << size << "\n" ; 
   std::cout << "SELFTIMED: " << secs << "\n" ;
 
   return 0;

@@ -19,7 +19,9 @@ import GHC.Conc (getNumProcessors)
 import System.IO.Unsafe (unsafePerformIO)
 import Debug.Trace
 
-import HSBencher (defaultMainModifyConfig)
+import Data.Monoid
+
+import HSBencher 
 import HSBencher.Backend.Fusion  (defaultFusionPlugin)
 import HSBencher.Backend.Dribble (defaultDribblePlugin)
 
@@ -37,16 +39,15 @@ all_benchmarks :: [Benchmark DefaultParamMeaning]
 all_benchmarks =
   [ (mkBenchmark "Reduce/Makefile" [elems] defaultCfgSpc)
     { progname = Just "thrust-reduce" } 
-  | elems  <- [ show (2^n) | n <- [8..24] ] -- 256 to 32768
+  | elems  <- [ show (2^n) | n <- [8..24] ] -- 256 to 16M
   ] ++ 
   [ (mkBenchmark "Scan/Makefile" [elems] defaultCfgSpc)
     { progname = Just "thrust-scan" } 
-  | elems  <- [ show (2^n) | n <- [8..24] ] -- 256 to 32768
+  | elems  <- [ show (2^n) | n <- [8..24] ] -- 256 to 16M
   ]
   
 -- | Default configuration space over which to vary settings:
 --   This is a combination of And/Or boolean operations, with the ability
---   to set various environment and compile options.
 defaultCfgSpc = And []
 
 -- | Here we have the option of changing the HSBencher config
@@ -56,5 +57,9 @@ myconf conf =
    { benchlist = all_benchmarks
    , plugIns   = [ SomePlugin defaultFusionPlugin,
                    SomePlugin defaultDribblePlugin ]
+   , harvesters =
+     customTagHarvesterInt "ELEMENTS_PROCESSED" `mappend` 
+     harvesters conf
+
    }
 
