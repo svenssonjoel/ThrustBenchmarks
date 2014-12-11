@@ -39,11 +39,11 @@ all_benchmarks :: [Benchmark DefaultParamMeaning]
 all_benchmarks =
   [ (mkBenchmark "Reduce/Makefile" [elems] defaultCfgSpc)
     { progname = Just "thrust-reduce" } 
-  | elems  <- [ show (2^n) | n <- [8..24] ] -- 256 to 16M
+  | elems  <- [ show (2^n) | n <- [8..25] ] -- 256 to 32M
   ] ++ 
   [ (mkBenchmark "Scan/Makefile" [elems] defaultCfgSpc)
     { progname = Just "thrust-scan" } 
-  | elems  <- [ show (2^n) | n <- [8..24] ] -- 256 to 16M
+  | elems  <- [ show (2^n) | n <- [8..25] ] -- 256 to 32M
   ]
   
 -- | Default configuration space over which to vary settings:
