@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
   // copy host to device 
   gettimeofday(&trans_t1, NULL); 
   thrust::device_vector<uint32_t> d_vec = h_vec;
-  gettimeofday(&trans_t2, NULL); §
+  gettimeofday(&trans_t2, NULL);
   
   gettimeofday(&tv1, NULL); 
   for (int i = 0; i < 1000; ++i) { 
