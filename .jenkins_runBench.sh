@@ -42,9 +42,6 @@ cabal install --disable-documentation --disable-library-profiling ./HSBencher/hs
 
 cabal install run_benchmarks.cabal --bindir=. --program-suffix=.exe
 
-module add nvcc 
-
-
 export TRIALS=1
 # Parfunc account, registered app in api console:
 CID=905767673358.apps.googleusercontent.com
