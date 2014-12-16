@@ -42,6 +42,7 @@ cabal install --disable-documentation --disable-library-profiling ./HSBencher/hs
 
 cabal install run_benchmarks.cabal --bindir=. --program-suffix=.exe
 
+module add nvcc 
 
 
 export TRIALS=1
