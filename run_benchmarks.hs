@@ -44,7 +44,10 @@ all_benchmarks =
   [ (mkBenchmark "Scan/Makefile" [elems] defaultCfgSpc)
     { progname = Just "thrust-scan" } 
   | elems  <- [ show (2^n) | n <- [8..25] ] -- 256 to 32M
-  ]
+  ] ++
+  [ (mkBenchmark "Sort/Makefile" [elems] defaultCfgSpc)
+    { progname = Just "thrust-sort" }
+  | elemts <- [ show (2^n) | n <- [8..25] ] -- 256 to 32M
   
 -- | Default configuration space over which to vary settings:
 --   This is a combination of And/Or boolean operations, with the ability
@@ -58,7 +61,10 @@ myconf conf =
    , plugIns   = [ SomePlugin defaultFusionPlugin,
                    SomePlugin defaultDribblePlugin ]
    , harvesters =
-     customTagHarvesterInt "ELEMENTS_PROCESSED" `mappend` 
+     customTagHarvesterInt "ELEMENTS_PROCESSED" `mappend`
+     customTagHarvesterDouble "TRANSFER_TO_DEVICE" `mappend`
+     customTagHarvesterInt "BYTES_TO_DEVICE" `mappend`
+     customTagHArvesterInt "BYTES_FROM_DEVICE" `mappend`
      harvesters conf
 
    }
