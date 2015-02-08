@@ -47,7 +47,8 @@ all_benchmarks =
   ] ++
   [ (mkBenchmark "Sort/Makefile" [elems] defaultCfgSpc)
     { progname = Just "thrust-sort" }
-  | elemts <- [ show (2^n) | n <- [8..25] ] -- 256 to 32M
+  | elemts <- [ show (2^n) | n <- [8..25] ]] -- 256 to 32M
+
   
 -- | Default configuration space over which to vary settings:
 --   This is a combination of And/Or boolean operations, with the ability
