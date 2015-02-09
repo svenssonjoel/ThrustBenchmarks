@@ -47,7 +47,7 @@ all_benchmarks =
   ] ++
   [ (mkBenchmark "Sort/Makefile" [elems] defaultCfgSpc)
     { progname = Just "thrust-sort" }
-  | elemts <- [ show (2^n) | n <- [8..25] ]] -- 256 to 32M
+  | elems <- [ show (2^n) | n <- [8..25] ]] -- 256 to 32M
 
   
 -- | Default configuration space over which to vary settings:
@@ -65,7 +65,7 @@ myconf conf =
      customTagHarvesterInt "ELEMENTS_PROCESSED" `mappend`
      customTagHarvesterDouble "TRANSFER_TO_DEVICE" `mappend`
      customTagHarvesterInt "BYTES_TO_DEVICE" `mappend`
-     customTagHArvesterInt "BYTES_FROM_DEVICE" `mappend`
+     customTagHarvesterInt "BYTES_FROM_DEVICE" `mappend`
      harvesters conf
 
    }
