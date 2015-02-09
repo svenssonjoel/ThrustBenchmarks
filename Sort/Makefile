@@ -8,7 +8,7 @@ build: Sort.cu
 
 
 run: 
-	./Scan $(ARGS)
+	./Sort $(ARGS)
 
 
 
